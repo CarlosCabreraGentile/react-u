@@ -11,6 +11,7 @@ class App extends React.Component {
 
   //This method is used for data loading when component starts
   componentDidMount() {
+    // Method provided by web page to geolocate 
     window.navigator.geolocation.getCurrentPosition(
       position => {
         //Called setState to update state
