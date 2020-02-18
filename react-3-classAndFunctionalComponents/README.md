@@ -4,6 +4,11 @@ General structure of an app, showing differences between functional and class co
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Styling
+
+This app was made with semanticUI. 
+LINK: https://semantic-ui.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
