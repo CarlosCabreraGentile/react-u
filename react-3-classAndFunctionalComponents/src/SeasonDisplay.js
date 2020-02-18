@@ -30,6 +30,7 @@ const SeasonDisplay = props => {
   const { text, iconName } = seasonConfig[season];
 
   return (
+      // using semanti UI for styling the app
     <div className={`season-display ${season}`}>
       <i className={`icon-left massive ${iconName} icon`} />
       <h1>{text}</h1>
