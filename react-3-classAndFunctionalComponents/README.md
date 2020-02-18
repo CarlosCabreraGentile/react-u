@@ -4,6 +4,8 @@ General structure of an app, showing differences between functional and class co
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Starting from class 46
+
 ## Styling
 
 This app was made with semanticUI. 
