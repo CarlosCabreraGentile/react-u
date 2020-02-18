@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Spinner from './Spinner';
 import SeasonDisplay from './SeasonDisplay';
 
+// If use as a class and subclasses
+// must extends React.Component and define render() method
 class App extends React.Component {
   state = {
     lat: null,
