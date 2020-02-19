@@ -13,11 +13,15 @@ class SearchBar extends React.Component {
     // option 2 write the function inside de input
     //<input type="text" onChange={ (e) => console.log(e.target.value) } />
 
+    onFormSubmit = event => {
+        event.preventDefault();
+    }
+
     // must implement this method
     render() {
         return (
             <div className="ui segment">
-                <form className="ui form">
+                <form onSubmit={this.onFormSubmit} className="ui form">
                     <div className="field">
                         <label>Image Search</label>
                         <input 
