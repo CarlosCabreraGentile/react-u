@@ -15,23 +15,27 @@ class SearchBar extends React.Component {
 
     onFormSubmit = event => {
         event.preventDefault();
+
+        // get access to the function sent from the parent
+        this.props.onSubmit(this.state.term);
     }
 
     // must implement this method
     render() {
         return (
             <div className="ui segment">
+                {/* onSumbit send the form, call onFormSubmit and sent the value to the parent */}
                 <form onSubmit={this.onFormSubmit} className="ui form">
                     <div className="field">
                         <label>Image Search</label>
-                        <input 
-                        type="text" 
-                        value={this.state.term}
-                        onChange={ e=> this.setState({term: e.target.value}) } />
+                        <input
+                            type="text"
+                            value={this.state.term}
+                            onChange={e => this.setState({ term: e.target.value })} />
                     </div>
                 </form>
             </div>
-        ) 
+        )
     }
 }
 
