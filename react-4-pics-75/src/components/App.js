@@ -1,11 +1,19 @@
 import React from 'react';
-import SearchBar from './SearchBar'
+import axios from 'axios';
+import SearchBar from './SearchBar';
 
 class App extends React.Component {
-    // Create a funciont and pass it to the child
+    // Create a function and pass it to the child
     // to get data from child
     onSearcSubmit(term) {
-        console.log(term);
+        axios.get('https://api.unsplash.com/search/photos', {
+            params: {
+                query: term
+            },
+            headers: {
+                Authorization: 'Client-ID 46b19875073b43410a2b41b72bdc18ca2f387a18e308111bd3fd1677682b1a57'
+            }
+        });
     }
 
     render() {
