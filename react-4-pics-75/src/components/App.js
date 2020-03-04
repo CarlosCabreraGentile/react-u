@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 
 class App extends React.Component {
@@ -10,12 +10,9 @@ class App extends React.Component {
     // Create a function and pass it to the child
     // to get data from child
     onSearcSubmit = async term => {
-        const response = await axios.get('https://api.unsplash.com/search/photos', {
+        const response = await unsplash.get('/search/photos', {
             params: {
                 query: term
-            },
-            headers: {
-                Authorization: 'Client-ID 46b19875073b43410a2b41b72bdc18ca2f387a18e308111bd3fd1677682b1a57'
             }
         });
         // once finish the request, update de state with the images
