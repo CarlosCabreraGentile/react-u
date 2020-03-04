@@ -6,9 +6,9 @@ class SearchBar extends React.Component {
     };
 
     // option 1, create this function linked to input
-    onInputChange(event) {
-        console.log(event.target.value);
-    }
+    // onInputChange(event) {
+    //     console.log(event.target.value);
+    // }
 
     // option 2 write the function inside de input
     //<input type="text" onChange={ (e) => console.log(e.target.value) } />
@@ -31,6 +31,9 @@ class SearchBar extends React.Component {
                         <input
                             type="text"
                             value={this.state.term}
+                            // option 1
+                            // onChange= {this.onInputChange}
+                            // option 2
                             onChange={e => this.setState({ term: e.target.value })} />
                     </div>
                 </form>
