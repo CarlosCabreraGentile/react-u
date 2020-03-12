@@ -7,8 +7,8 @@ class SearchBar extends React.Component {
         event.preventDefault();
 
         // get access to the function sent from the parent
-        // in this case the parent set a prop the child calles onSubmit
-        this.props.onSubmit(this.state.term);
+        // in this case the parent set a prop the child calles onSearchBarFormSubmit
+        this.props.onSearchBarFormSubmit(this.state.inputText);
     }
 
     render() {
@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
                     type="text" 
                     value={this.state.inputText}
                     // onChange is a especial react name function
-                    onChange={e => this.setState({ term: e.target.value })}
+                    onChange={e => this.setState({ inputText: e.target.value })}
                     />
                 </div>
              </form>
