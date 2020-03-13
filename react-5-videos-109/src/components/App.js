@@ -3,12 +3,18 @@ import SearchBar from './SearchBar';
 import youtube from '../apis/youtube';
 
 class App extends React.Component {
-    onInputTextSubmit = inputText => {
-        youtube.get('/search', {
+    state = {
+        videos: []
+    };
+
+    onInputTextSubmit = async inputText => {
+        const response = await youtube.get('/search', {
             params: {
                 q: inputText
             }
         });
+
+        this.setState({ videos: response.data.items });
     };
 
     render() {
