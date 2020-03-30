@@ -1,0 +1,18 @@
+import React from 'react';
+import './VideoItem.css';
+
+const VideoItem = ({ onVideoSelect, video }) => {
+    return (
+        //call onVideoSelect with the video selected, and update the state off parent (App.js)
+        <div onClick={()=> onVideoSelect(video)} className="video-item item">
+            <img className="ui image" src={video.snippet.thumbnails.medium.url} />
+            <div className="content">
+                <div className="header">
+                    {video.snippet.title}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default VideoItem;
