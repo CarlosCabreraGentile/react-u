@@ -11,6 +11,11 @@ class App extends React.Component {
         selectedVideo: null
     };
 
+    componentDidMount() {
+        // when component creates, call onInputTextSubmit and set a default value
+        this.onInputTextSubmit('');
+    }
+
     onInputTextSubmit = async inputText => {
         const response = await youtube.get('/search', {
             params: {
@@ -18,7 +23,12 @@ class App extends React.Component {
             }
         });
 
-        this.setState({ videos: response.data.items });
+        this.setState(
+            { 
+                videos: response.data.items,
+                selectedVideo: response.data.items[0] 
+            }
+            );
     };
 
     // video in parameter is video fetched from Youtube API when click on it, in children component
@@ -30,12 +40,18 @@ class App extends React.Component {
         return (
             <div className="ui container">
                 <SearchBar onSearchBarFormSubmit={this.onInputTextSubmit} />
-
-                {/* passing selected video to VideoDetail component */}
-                <VideoDetail video={this.state.selectedVideo} />
-
-                {/* Give to the VideoList the list of videos */}
-                <VideoList onVideoSelect={this.onVideoSelectInComponent} videos={this.state.videos} />
+                <div className="ui grid">
+                    <div className="ui row">
+                        <div className="eleven wide column">
+                            {/* passing selected video to VideoDetail component */}
+                            <VideoDetail video={this.state.selectedVideo} />
+                        </div>
+                        <div className="five wide column">
+                            {/* Give to the VideoList the list of videos */}
+                            <VideoList onVideoSelect={this.onVideoSelectInComponent} videos={this.state.videos} />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
