@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import VideoList from './VideoList';
+import VideoDetail from './VideoDetail';
 
 import youtube from '../apis/youtube';
 
@@ -22,13 +23,17 @@ class App extends React.Component {
 
     // video in parameter is video fetched from Youtube API when click on it, in children component
     onVideoSelectInComponent = (video) => {
-        console.log('FROM APP', video);
+        this.setState({ selectedVideo: video });
     }
 
     render() {
         return (
             <div className="ui container">
                 <SearchBar onSearchBarFormSubmit={this.onInputTextSubmit} />
+
+                {/* passing selected video to VideoDetail component */}
+                <VideoDetail video={this.state.selectedVideo} />
+
                 {/* Give to the VideoList the list of videos */}
                 <VideoList onVideoSelect={this.onVideoSelectInComponent} videos={this.state.videos} />
             </div>
