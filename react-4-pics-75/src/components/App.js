@@ -10,7 +10,7 @@ class App extends React.Component {
 
     // Create a function and pass it to the child
     // to get data from child
-    onSearcSubmit = async term => {
+    onSearchSubmit = async term => {
         const response = await unsplash.get('/search/photos', {
             params: {
                 query: term
@@ -26,7 +26,7 @@ class App extends React.Component {
             <div className="ui container" style={{ marginTop: '10px' }}>
                 {/* onSubmit can be called anything we want, runWhenCalled, etc */}
                 {/* it has not to be named like that, you can put any name you want */}
-                <SearchBar onSubmit={this.onSearcSubmit} />
+                <SearchBar onSubmit={this.onSearchSubmit} />
                 <ImageList images={this.state.images} />
             </div>
         );
