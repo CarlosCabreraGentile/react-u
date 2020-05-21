@@ -6,7 +6,8 @@ import App from './components/App';
 import reducers from './reducers';
 
 ReactDOM.render(
-    <Provider>
+    // passing a single prop called store
+    <Provider store={createStore(reducers)}>
         <App />
     </Provider>
     , document.getElementById('root')
