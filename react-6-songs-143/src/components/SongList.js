@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { selectSong } from '../actions';
 
 // option 1
 // class SongList extends React.Component {}
@@ -13,7 +14,10 @@ class SongList extends Component {
                 return (
                     <div className="item" key={song.title}>
                         <div className="right floated content">
-                            <button className="ui button primary">
+                            <button
+                                className="ui button primary"
+                                onClick={() => this.props.selectSong(song)}
+                            >
                                 Select
                             </button>
                         </div>
@@ -34,5 +38,7 @@ const mapStateToProps = (state) => {
     return { songs: state.songs };
 }
 
-//             call connect() function and then invoke the function
-export default connect(mapStateToProps)(SongList);
+// call connect() function and then invoke the function
+// connect function take the argument and pass it as a prop into our component
+// every time you want to call an action creator from a component, you have to pass it to the connect function
+export default connect(mapStateToProps, { selectSong })(SongList);
