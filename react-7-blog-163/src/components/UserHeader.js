@@ -11,16 +11,17 @@ class UserHeader extends React.Component {
     }
 
     render() {
-        // find the user from the store that match with the user with id we pass to the component
-        const user = this.props.users.find(user => user.id === this.props.userId);
+        const { user } = this.props;
+
         if (!user) { return null }
 
         return <div className="header">{user.name}</div>
     }
 }
-
-const mapStateToProps = (state) => {
-    return { users: state.users };
+//                              this second argument it´s a memory reference to component props
+const mapStateToProps = (state, ownProps) => {
+    // find the user from the store that match with the user with id we pass to the component
+    return { user: state.users.find(user => user.id === ownProps.userId) };
 };
 
 export default connect(mapStateToProps, { fetchUser })(UserHeader);
