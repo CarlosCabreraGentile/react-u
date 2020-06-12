@@ -8,12 +8,12 @@ import jsonPlaceholder from '../apis/jsonPlaceholder';
  */
 
 // with API calls (asynchronous call) we have to use middleware to handle this
-// amd to avoid the normal flow of action and reducers get broken
+// and to avoid the normal flow of action and reducers get broken
 // the action creator MUST return a plain js object
 // to have async action creators inside redux app, you have to install a middleware
 // with Redux Thunk now you Action Creators CAN return action objects, or return functions
 
-// a function that returns a function
+// FETCH POSTS a function that returns a function
 export const fetchPosts = () => async dispatch => {
     const response = await jsonPlaceholder.get('/posts');
 
@@ -21,12 +21,29 @@ export const fetchPosts = () => async dispatch => {
         type: 'FETCH_POSTS',
         payload: response.data
     });
-}
+};
 
-// option 2
+// FETCH USER a function that returns a function
+export const fetchUser = (id) => async dispatch => {
+    const response = await jsonPlaceholder.get(`/users/${id}`);
+
+    dispatch({
+        type: 'FETCH_USER',
+        payload: response.data
+    });
+};
+
+// FETCH POSTS and USERS a function that returns a function
+export const fetchPostsAndUsers = () => async dispatch => {
+    // calling an action creator from another action creator
+    await dispatch(fetchPosts());
+};
+
+
+// OPTION 2
 
 // export const fetchPosts = () => {
-//     return async function(dispatch) {
+    //     return async function(dispatch) {
 //         const response = await jsonPlaceholder.get('/posts');
 
 //         dispatch({
@@ -36,17 +53,19 @@ export const fetchPosts = () => async dispatch => {
 //     }
 // };
 
-// a function that returns a function
-export const fetchUser = (id) => dispatch => {
-    _fetchUser(id, dispatch);
-}
+// OPTION WITH MEMOIZE
 
-const _fetchUser = _.memoize(async (id, dispatch) => {
-    // makes the request and dispatch an action one time
-    const response = await jsonPlaceholder.get(`/users/${id}`);
+// export const fetchUser = (id) => dispatch => {
+//     _fetchUser(id, dispatch);
+// }
 
-    dispatch({
-        type: 'FETCH_USER',
-        payload: response.data
-    });
-});
+// const _fetchUser = _.memoize(async (id, dispatch) => {
+//     // makes the request and dispatch an action one time
+//     const response = await jsonPlaceholder.get(`/users/${id}`);
+
+//     dispatch({
+//         type: 'FETCH_USER',
+//         payload: response.data
+//     });
+// });
+
