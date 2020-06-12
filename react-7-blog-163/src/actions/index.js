@@ -34,9 +34,15 @@ export const fetchUser = (id) => async dispatch => {
 };
 
 // FETCH POSTS and USERS a function that returns a function
-export const fetchPostsAndUsers = () => async dispatch => {
+export const fetchPostsAndUsers = () => async (dispatch, getState) => {
     // calling an action creator from another action creator
     await dispatch(fetchPosts());
+    // iterates over array and returns all differents ids
+    // uniq return an array with the unique user id
+    const userIds = _.uniq(_.map(getState().posts, 'userId'));
+
+    // not necessary put the await, because we can wait for it
+    userIds.forEach(id => dispatch(fetchUser(id)));
 };
 
 
