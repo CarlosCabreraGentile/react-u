@@ -52,6 +52,7 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
     //     .map('userId')
     //     .uniq()
     //     .forEach(id => dispatch(fetchUser(id)))
+    //     .value() //executes chain
 };
 
 
