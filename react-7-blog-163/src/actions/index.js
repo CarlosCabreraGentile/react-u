@@ -39,10 +39,19 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
     await dispatch(fetchPosts());
     // iterates over array and returns all differents ids
     // uniq return an array with the unique user id
+
+    //OPTION 1
     const userIds = _.uniq(_.map(getState().posts, 'userId'));
 
     // not necessary put the await, because we can wait for it
     userIds.forEach(id => dispatch(fetchUser(id)));
+
+
+    //OPTION 2 USING LODASH CHAIN FUNCTION
+    // _.chain(getState().posts)
+    //     .map('userId')
+    //     .uniq()
+    //     .forEach(id => dispatch(fetchUser(id)))
 };
 
 
