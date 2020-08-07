@@ -1,9 +1,27 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 
-const StreamCreate = () => {
-    return (
-        <div>StreamCreate</div>
-    );
+class StreamCreate extends React.Component {
+    //take input properties(destructuring)
+    renderInputField({ input, label }) {
+        return (
+            <div className="field">
+                <label>{label}</label>
+                <input {...input} />
+            </div>
+        );
+    }
+
+    render() {
+        return (
+            <form className="ui form">
+                <Field name="title" component={this.renderInputField} label="Enter Title" />
+                <Field name="description" component={this.renderInputField} label="Enter Description" />
+            </form>
+        );
+    }
 }
 
-export default StreamCreate;
+export default reduxForm({
+    form: 'streamCreate'
+})(StreamCreate);
