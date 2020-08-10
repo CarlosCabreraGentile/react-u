@@ -9,6 +9,7 @@ import reducers from './reducers';
 
 //debugger for Redux Application
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// store has dispatch function --> store.dispatch() 
 const store = createStore(
     reducers,
     composeEnhancers(applyMiddleware(reduxThunk))
