@@ -6,21 +6,20 @@ import {
     EDIT_STREAM,
     DELETE_STREAM
 } from '../actions/types';
-import streams from '../apis/streams';
 
 //the first time returns an empty object
 export default (state = {}, action) => {
     switch (action.type) {
         case GET_STREAMS:
             //create a new object with all records mapped from array to object, and return the new state
-            return { ...streams, ..._.mapKeys(action.payload, 'id') };
+            return { ...state, ..._.mapKeys(action.payload, 'id') };
         //create a new object with all records and the new one, and return the new state
         case GET_STREAM:
-            return { ...streams, [action.payload.id]: action.payload };
+            return { ...state, [action.payload.id]: action.payload };
         case CREATE_STREAM:
-            return { ...streams, [action.payload.id]: action.payload };
+            return { ...state, [action.payload.id]: action.payload };
         case EDIT_STREAM:
-            return { ...streams, [action.payload.id]: action.payload };
+            return { ...state, [action.payload.id]: action.payload };
         case DELETE_STREAM:
             //what key I want to delete from the state object
             //create a new object without the key
