@@ -50,9 +50,11 @@ export const getStream = (id) => async (dispatch) => {
 
 //ACTION CREATOR
 export const editStream = (id, formValues) => async (dispatch) => {
-    const response = await streams.put(`/streams/${id}`, formValues);
+    const response = await streams.patch(`/streams/${id}`, formValues);
     // ACTION
     dispatch({ type: EDIT_STREAM, payload: response.data });
+    //navigate user programatically
+    history.push('/');
 };
 
 //ACTION CREATOR
