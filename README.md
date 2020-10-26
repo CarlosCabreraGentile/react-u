@@ -20,3 +20,9 @@ Master different techniques of deployment so you can show off the apps you build
 
 See different methods of building UI's through composition of components
 
+## react-4-pics Section 7: Handling User Input with Forms and Events, Section 8: Making API Requests with React, Section 9: Building Lists of Records, Section 10: Using Ref's for DOM Access
+## react-5-videos Section 11: Let's Test Your React Mastery!
+## react-6-songs Section 17: Integrating React with Redux
+## react-7-blog Section 18: Async Actions with Redux Thunk - Section 19: Redux Store Design
+## react-8-streams Section 20: Navigation with React Router, Section 21: Handling Authentication with React, Section 22: Redux Dev Tools, Section 23: Handling Forms with Redux Form, Section 24: REST-Based React Apps
+## react-9-widgets Section 12: Understanding Hooks in React
