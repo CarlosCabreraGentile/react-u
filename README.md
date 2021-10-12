@@ -2,6 +2,8 @@
 
 Course Last Updated for React v16.6.3 and Redux v4.0.1!  All content is brand new!  Update includes detailed videos on the new React Hooks system.
 
+https://www.udemy.com/course/react-redux/
+
 ## Below is a partial list of the topics you'll find in this course:
 
 Master the fundamental features of React, including JSX, state, and props
